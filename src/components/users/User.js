@@ -6,7 +6,9 @@ import GithubContext from '../../context/github/githubContext';
 
 const User = ({ match }) => {
   const githubContext = useContext(GithubContext);
+
   const { getUser, loading, user, repos, getUserRepos } = githubContext;
+
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
@@ -22,8 +24,8 @@ const User = ({ match }) => {
     blog,
     login,
     html_url,
-    following,
     followers,
+    following,
     public_repos,
     public_gists,
     hireable
@@ -61,27 +63,29 @@ const User = ({ match }) => {
             </Fragment>
           )}
           <a href={html_url} className='btn btn-dark my-1'>
-            Visit GitHub Profile
+            Visit Github Profile
           </a>
           <ul>
             <li>
               {login && (
                 <Fragment>
-                  <strong>Username:</strong> {login}
+                  <strong>Username: </strong> {login}
                 </Fragment>
               )}
             </li>
+
             <li>
               {company && (
                 <Fragment>
-                  <strong>Company</strong> {company}
+                  <strong>Company: </strong> {company}
                 </Fragment>
               )}
             </li>
+
             <li>
               {blog && (
                 <Fragment>
-                  <strong>Website:</strong> {blog}
+                  <strong>Website: </strong> {blog}
                 </Fragment>
               )}
             </li>
@@ -91,7 +95,7 @@ const User = ({ match }) => {
       <div className='card text-center'>
         <div className='badge badge-primary'>Followers: {followers}</div>
         <div className='badge badge-success'>Following: {following}</div>
-        <div className='badge badge-danger'>Public Repos: {public_repos}</div>
+        <div className='badge badge-light'>Public Repos: {public_repos}</div>
         <div className='badge badge-dark'>Public Gists: {public_gists}</div>
       </div>
       <Repos repos={repos} />
